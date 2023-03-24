@@ -5,7 +5,7 @@ const ACCEL = 3.0
 
 var velocity = Vector2()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var input_vector = Vector2()
 	
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -16,4 +16,4 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2(), ACCEL * 2.0)
 	
-	move_and_collide(velocity * delta)
+	velocity = move_and_slide(velocity)

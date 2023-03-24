@@ -1,32 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://level/Rocks.png" type="Texture" id=1]
-[ext_resource path="res://player/Modern_Hero_P3.png" type="Texture" id=2]
-[ext_resource path="res://Player.gd" type="Script" id=3]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 2.5
-height = 4.0
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 
 [node name="World" type="Node2D"]
 
-[node name="Rocks" type="Sprite" parent="."]
-position = Vector2( 203, 103 )
-texture = ExtResource( 1 )
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="Player" type="KinematicBody2D" parent="."]
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 426.003, 0.00925493, 425.953, 239.968, -0.0204239, 240.462, 0.0354424, -0.0329351, 87.5321, -0.416542, 69.4529, 87.4571, 82.0663, 150.104, 46.7487, 188.785, 188.019, 204.762, 349.471, 198.035, 389.414, 163.558, 357.88, 124.457, 363.767, 81.5709, 394.039, 62.2302, 366.289, -1.67789 )
 
-[node name="Sprite" type="Sprite" parent="Player"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
-hframes = 10
-vframes = 48
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 213, 120 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 0, 5 )
-rotation = -1.5708
-shape = SubResource( 1 )
+[node name="Player" parent="Position2D" instance=ExtResource( 1 )]
