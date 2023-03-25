@@ -1,15 +1,35 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Rock.tscn" type="PackedScene" id=2]
 
 [node name="World" type="Node2D"]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 426.003, 0.00925493, 425.953, 239.968, -0.0204239, 240.462, 0.0354424, -0.0329351, 87.5321, -0.416542, 69.4529, 87.4571, 82.0663, 150.104, 46.7487, 188.785, 188.019, 204.762, 349.471, 198.035, 389.414, 163.558, 357.88, 124.457, 363.767, 81.5709, 394.039, 62.2302, 366.289, -1.67789 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 213, 120 )
 
-[node name="Player" parent="Position2D" instance=ExtResource( 1 )]
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 213, 120 )
+
+[node name="Rock" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 86.097, 186.877 )
+
+[node name="Rock2" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 333.042, 170.877 )
+
+[node name="Rock3" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 156.176, 154.877 )
+
+[node name="Rock4" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 317.042, 120 )
+
+[node name="Rock5" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 42.0474, 73.4161 )
+
+[node name="Rock6" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 259.626, 57.4161 )
