@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Modern_Hero_P3.png" type="Texture" id=2]
@@ -10,6 +10,7 @@ height = 4.0
 [sub_resource type="Animation" id=2]
 resource_name = "IdleDown"
 length = 2.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -26,6 +27,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "IdleLeft"
 length = 2.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -42,6 +44,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=5]
 resource_name = "IdleRight"
 length = 2.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -58,6 +61,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "IdleUp"
 length = 2.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -89,6 +93,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=11]
 resource_name = "RunDown"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -105,6 +110,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=14]
 resource_name = "RunLeft"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -121,6 +127,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=12]
 resource_name = "RunRight"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -137,6 +144,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=13]
 resource_name = "RunUp"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -153,6 +161,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=7]
 resource_name = "WalkDown"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -169,6 +178,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=8]
 resource_name = "WalkLeft"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -185,6 +195,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=9]
 resource_name = "WalkRight"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -201,6 +212,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=10]
 resource_name = "WalkUp"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -213,6 +225,66 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 60, 61, 62, 63, 64, 65, 66, 67 ]
 }
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "IdleDown"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "IdleUp"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "IdleRight"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "IdleLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=19]
+blend_point_0/node = SubResource( 15 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 16 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 17 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 18 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "WalkDown"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "WalkUp"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "WalkRight"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "WalkLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=22]
+blend_point_0/node = SubResource( 25 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 26 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 27 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 28 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachine" id=20]
+states/Idle/node = SubResource( 19 )
+states/Idle/position = Vector2( 483, 60 )
+states/Walk/node = SubResource( 22 )
+states/Walk/position = Vector2( 717, 60 )
+transitions = [ "Idle", "Walk", SubResource( 23 ), "Walk", "Idle", SubResource( 24 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -245,3 +317,11 @@ anims/WalkDown = SubResource( 7 )
 anims/WalkLeft = SubResource( 8 )
 anims/WalkRight = SubResource( 9 )
 anims/WalkUp = SubResource( 10 )
+
+[node name="AnimTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 20 )
+anim_player = NodePath("../AnimPlayer")
+active = true
+parameters/playback = SubResource( 21 )
+parameters/Idle/blend_position = Vector2( -0.313788, 0.508621 )
+parameters/Walk/blend_position = Vector2( 0, 0 )
